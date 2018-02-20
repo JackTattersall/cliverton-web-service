@@ -9,12 +9,15 @@ https://docs.djangoproject.com/en/2.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
-
+from sys import path
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+path.append(BASE_DIR)
 
+#
+PROJECT_ROOT = os.path.dirname(BASE_DIR)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -37,9 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'api',
-    'repository',
-    'firebase'
+    'rest_framework',
+    'api'
 ]
 
 MIDDLEWARE = [
@@ -121,3 +123,142 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 STATIC_ROOT = os.path.abspath(os.path.join(BASE_DIR, 'OpenGiWebService', 'static'))
 STATIC_URL = '/static/'
+
+
+# Logging
+from colorlog import ColoredFormatter
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': "[%(asctime)s] %(levelname)s [%(pathname)s:%(lineno)s] %(message)s",
+        },
+        'color': {
+            '()': 'colorlog.ColoredFormatter',
+            'format': '%(log_color)s%(levelname)-8s %(message)s',
+            'log_colors': {
+                'DEBUG': 'cyan',
+                'INFO': 'green',
+                'WARNING': 'yellow',
+                'ERROR': 'red',
+                'CRITICAL': 'red,bg_white'
+            }
+        }
+    },
+    'handlers': {
+        'null': {
+            'level': 'DEBUG',
+            'class': 'logging.NullHandler'
+        },
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'color'
+        },
+        'logfile': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': PROJECT_ROOT + '\\app_log.log',
+            'maxBytes': 50000,
+            'backupCount': 2,
+            'formatter': 'verbose'
+        },
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler'
+        }
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': False
+        },
+        'api': {
+            'handlers': ['console', 'mail_admins', 'logfile'],
+            'level': 'DEBUG'
+        }
+    }
+}
+
+# Project Specific
+WSDL = "file://{}".format(os.path.abspath(os.path.join(BASE_DIR, 'templates', 'UAT.wsdl')))
+
+XML_TEMPLATES = {
+    'prospect_create': {
+        'template': 'templates\\prospect_create.xml',
+        'p_cm_xpath': './apmdata/prospect/p.cm',
+        'p_type_xpath': './apmpolicy/p.py/Ptype'
+    }
+}
+
+# required - True or False (required by OpenGI back office)
+# max_length - Max length of OGI field
+VALIDATORS = {
+    'prospect': {
+        'p.cm': {
+            'Name': {
+                'required': True,
+                'max_length': 30
+            },
+            'Addr1': {
+                'required': True,
+                'max_length': 30
+            },
+            'Addr2': {
+                'required': False,
+                'max_length': 30
+            },
+            'Addr3': {
+                'required': False,
+                'max_length': 30
+            },
+            'Addr4': {
+                'required': False,
+                'max_length': 30
+            },
+            'Pcode': {
+                'required': True,
+                'max_length': 10
+            },
+            'Tel': {
+                'required': True,
+                'max_length': 20
+            },
+            'Email': {
+                'required': True,
+                'max_length': 50
+            },
+        }
+    },
+    'transact': {
+        'Polref': {
+            'required': True,
+            'max_length': 7
+        }
+    },
+    'policy': {
+        'CLT1': {
+            'indemLevel': {
+                'required': True,
+                'max_length': 5
+            },
+            'newVenture': {
+                'required': True,
+                'max_length': 5
+            }
+        },
+        'CLT2': {
+            'howManyDogs': {
+                'required': True,
+                'max_length': 2
+            }
+        }
+    }
+}

@@ -1,0 +1,27 @@
+<xmlexecute>
+    <job>
+        <queue>1</queue>
+    </job>
+    <parameters>
+        <yzt>
+            <char20.1>create-cliv</char20.1>
+        </yzt>
+    </parameters>
+    <apmdata>
+        <prospect>
+            <p.cm>
+                <Name>Bob Test</Name>
+                <Addr1>3 Test Rd</Addr1>
+                <Pcode>TT1 TT2</Pcode>
+                <Tel>1234567890</Tel>
+                <Dob>23/07/1986</Dob>
+                <Exec>£$%</Exec>
+            </p.cm>
+        </prospect>
+    </apmdata>
+    <apmpolicy>
+        <p.py>
+            <Ptype>YT</Ptype>
+        </p.py>
+    </apmpolicy>
+</xmlexecute>

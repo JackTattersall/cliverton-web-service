@@ -1,0 +1,24 @@
+<xmlexecute>
+    <job>
+        <queue>1</queue>
+    </job>
+    <parameters>
+        <yzt>
+            <char20.1>create-cliv</char20.1>
+        </yzt>
+    </parameters>
+    <apmdata>
+        <prospect>
+            <p.cm>
+
+            </p.cm>
+        </prospect>
+    </apmdata>
+    <apmpolicy>
+        <p.py>
+            <Ptype>
+
+            </Ptype>
+        </p.py>
+    </apmpolicy>
+</xmlexecute>

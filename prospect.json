@@ -1,0 +1,49 @@
+{
+    "type": "object",
+    "properties": {
+        "Name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 30
+        },
+        "Addr1": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 30
+        },
+        "Addr2": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 30
+        },
+        "Addr3": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 30
+        },
+        "Addr4": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 30
+        },
+        "Pcode": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 10
+        },
+        "Tel": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 20
+        },
+        "Email": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 50
+        },
+    },
+    "required": [
+        "Pcode", "Email", "Tel", "Name", "Addr1"
+    ],
+    "additionalProperties": false
+}

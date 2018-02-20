@@ -1,0 +1,50 @@
+<xmlexecute>
+    <job>
+        <queue>1</queue>
+    </job>
+    <parameters>
+        <yzt>
+            <char20.1>update-cliv</char20.1>
+        </yzt>
+    </parameters>
+    <apmdata>
+        <prospect>
+            <p.cm>
+                <Refno>
+                    <!--Client ref here-->
+                </Refno>
+            </p.cm>
+        </prospect>
+    </apmdata>
+    <apmpolicy>
+        <p.py>
+            <Polref>
+                <!--Policy ref here-->
+            </Polref>
+        </p.py>
+        <BGA>
+
+        </BGA>
+        <GENI>
+
+        </GENI>
+        <YTID>
+
+        </YTID>
+        <YTPQ>
+
+        </YTPQ>
+        <CLI1>
+
+        </CLI1>
+        <CLI2>
+
+        </CLI2>
+        <TR01>
+
+        </TR01>
+        <BGB>
+
+        </BGB>
+    </apmpolicy>
+</xmlexecute>

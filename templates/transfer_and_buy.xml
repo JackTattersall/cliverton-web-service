@@ -1,0 +1,24 @@
+<xmlexecute>
+    <job>
+        <queue>1</queue>
+    </job>
+    <parameters>
+        <yzt>
+            <char20.1>convert-cliv</char20.1>
+        </yzt>
+    </parameters>
+    <apmdata>
+        <prospect>
+            <p.cm>
+                <!--Client ref here-->
+            </p.cm>
+        </prospect>
+    </apmdata>
+    <apmpolicy>
+        <p.py>
+            <Ptype>
+                <!--Policy ref here-->
+            </Ptype>
+        </p.py>
+    </apmpolicy>
+</xmlexecute>
